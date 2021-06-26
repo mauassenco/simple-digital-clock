@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: rgb(36, 35, 35);
+            color: rgb(63, 252, 63);
+        }
+        .container{
+            width: 400px;
+            height: 400px;
+            background: rgb(22, 22, 22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border:  rgb(63, 252, 63) 10px solid;
+        }
+        .animate{
+            border:  rgb(245, 39, 32) 10px solid;
+        }
+        .container h1{
+            font-weight: 900;
+            font-size: 60px;
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1></h1>
+  </div>
+ <script>
+    const container = document.querySelector('.container');
+    const h1 = document.querySelector('.container h1');
+
+    const clock = () =>{
+      const date = new Date();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let secondes = date.getSeconds();
+
+  //Adicionando o zero quando o nuemro tiver uma casa decimal
+      if(+hours <= 9){
+            hours = '0'+ hours;
+        }
+      if(+minutes <= 9){
+            minutes = '0'+ minutes;
+        }
+      if(+secondes <= 9){
+            secondes = '0'+ secondes;
+        }
+
+      // Colocando "tempo" nno h1 do HTML 
+          h1.innerHTML = hours + ':' + minutes + ':' + secondes;
+
+      // Animação
+      container.classList.toggle('animate');
+    }
+  setInterval(clock, 1000);
+
+ </script>
+</body>
+</html>
